@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployeesTable extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->unsignedInteger('userID');
-            $table->string("bankAccountNumber");
+            $table->boolean('isLegalEntity')->default(false);
             $table->timestamps();
 
             $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
@@ -29,6 +29,6 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('clients');
     }
 }

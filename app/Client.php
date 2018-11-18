@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Client extends Model
 {
     protected $fillable = [
-        'bankAccountNumber',
+        'isLegalEntity',
     ];
 
     public function user() {

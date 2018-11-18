@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('telephone');
             $table->date('dateOfBirth');
             $table->string('address');
-            $table->boolean('isAdmin');
+            $table->boolean('isAdmin')->default(false);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
