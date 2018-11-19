@@ -18,76 +18,111 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar fixed-top navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<div id="app">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
 
-                    </ul>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" style="position: relative">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url('/') }}">{{ config('app.name') }}</a>
+        <ul class="navbar-nav ml-auto" style="margin-right: 10px">
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="nav-item">
+                    @if (Route::has('register'))
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </li>
+            @else
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="">1. polozka</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="">2. polozka</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="">3. polozka</a>
-                        </li>
-
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                @endif
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                    <div class="dropdown-menu dropdown-menu-right" style="position: absolute" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                            {{ __('Logout') }}
+                        </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                              style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+
+
+        </ul>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/orders">
+                                Orders
+                            </a>
+                        </li>
+
+                        <!-- TODO: doplnit autorizaci pro zamestnance -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/clients">
+                                Clients
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/costumes">
+                                Costumes
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/accessories">
+                                Accessories
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/categories">
+                                Categories
+                            </a>
+                        </li>
+
+                        <!-- TODO: doplnit autorizaci pro admina -->
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/employees">
+                                Employees
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+            <main role="main" class="col-md-10 ml-sm-auto col-lg-10 pt-3 px-4">
+
+                @yield('content')
+
+            </main>
+        </div>
     </div>
+</div>
 </body>
 </html>

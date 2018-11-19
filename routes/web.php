@@ -14,8 +14,21 @@
 
 Auth::routes();
 
-//Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index');
 
-//});
+    //Route::resource('orders', 'OrdersController');
+
+    Route::resource('clients', 'ClientsController');
+
+    //Route::resource('costumes', 'CostumesController');
+
+    //Route::resource('accessories', 'AccessoriesController');
+
+    //Route::resource('categories', 'CategoriesController');
+
+    //Route::resource('employees', 'EmployeesController');
+
+
+});
