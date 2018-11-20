@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="h2">Orders</div>
+    <div class="h2">Employees</div>
 
     <div id="content">
 

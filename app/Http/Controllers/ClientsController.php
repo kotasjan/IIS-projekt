@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Employee;
+use App\Client;
+use App\User;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class ClientsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        if(request()->has('name'))
+        $users = User::paginate(10);
+
+        return view('clients.clients', compact('users'));
     }
 
     /**
@@ -41,10 +45,10 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Employee  $employee
+     * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show(Client $client)
     {
         //
     }
@@ -52,10 +56,10 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Employee  $employee
+     * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit(Client $client)
     {
         //
     }
@@ -64,10 +68,10 @@ class EmployeeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Employee  $employee
+     * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, Client $client)
     {
         //
     }
@@ -75,10 +79,10 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Employee  $employee
+     * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(Client $client)
     {
         //
     }

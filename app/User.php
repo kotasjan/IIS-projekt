@@ -27,4 +27,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'isAdmin',
     ];
+
+    public function client() {
+        return $this->hasOne(Client::class);
+    }
 }

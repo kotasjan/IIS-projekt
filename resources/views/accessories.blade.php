@@ -1,7 +1,10 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Jan Kotas
- * Date: 19.11.2018
- * Time: 17:34
- */
+@extends('layouts.app')
+
+@section('content')
+
+    <div class="h2">Accessories</div>
+
+    <div id="content">
+
+    </div>
+@endsection

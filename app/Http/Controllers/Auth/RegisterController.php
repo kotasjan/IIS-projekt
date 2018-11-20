@@ -81,7 +81,7 @@ class RegisterController extends Controller
         ]);
 
         Client::create([
-            'userID' => $user['id'],
+            'id' => $user['id'],
         ]);
 
         return $user;
