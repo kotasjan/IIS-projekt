@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>@yield('title', 'Půjčovna kostýmů')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,7 +27,7 @@
             <div class="col-md-8">
                 <div class="card">
 
-    @yield('content')
+                    @yield('content')
 
                 </div>
             </div>

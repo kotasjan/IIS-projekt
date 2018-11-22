@@ -4,10 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed id
+ */
 class Employee extends Model
 {
+
     protected $fillable = [
-        'bankAccountNumber',
+        'bankAccountNumber', 'id',
     ];
 
     public function user() {

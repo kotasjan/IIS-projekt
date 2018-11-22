@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title', 'Registration')
+
 @section('content')
 
     <div class="card-header">{{ __('Register') }}</div>
@@ -135,15 +137,8 @@
                 </div>
             </div>
 
-            @if($errors->any())
-                <div class="row collapse">
-                    <ul class="alert-box warning radius">
-                        @foreach($errors->all() as $error)
-                            <li> {{ $error }} </li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+
+            @include('layouts.errors')
         </form>
     </div>
 

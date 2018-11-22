@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
+/**
+ * @property mixed id
+ */
 class Client extends Model
 {
     protected $fillable = [

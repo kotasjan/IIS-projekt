@@ -6,6 +6,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
+/**
+ * @property mixed id
+ * @property mixed isAdmin
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -30,5 +35,11 @@ class User extends Authenticatable
 
     public function client() {
         return $this->hasOne(Client::class);
+    }
+
+    public function isEmployee() {
+
+        return (Employee::find($this->id)) ? true : false;
+
     }
 }

@@ -1,16 +1,17 @@
 @extends('layouts.app')
 
+@section('title', 'Dashboard')
+
+@section('headline', 'Dashboard')
+
 @section('content')
 
-    <div class="h2">Dashboard</div>
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
 
-    <div id="content">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
+    You are logged in!
 
-        You are logged in!
-    </div>
 @endsection

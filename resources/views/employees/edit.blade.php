@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <form method="POST" action="/clients/{{ $client[0]->id }}">
+    <form method="POST" action="/employees/{{ $employee[0]->id }}">
         @method('PATCH')
         @csrf
 
@@ -15,7 +15,7 @@
 
             <div class="col-md-6">
                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                       name="name" value="{{ $client[0]->name }}" required autofocus>
+                       name="name" value="{{ $employee[0]->name }}" required autofocus>
 
                 @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
 
             <div class="col-md-6">
                 <input id="surname" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                       name="surname" value="{{ $client[0]->surname }}" required autofocus>
+                       name="surname" value="{{ $employee[0]->surname }}" required autofocus>
 
                 @if ($errors->has('surname'))
                     <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
 
             <div class="col-md-6">
                 <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
-                       name="phone" value="{{ $client[0]->phone }}" required>
+                       name="phone" value="{{ $employee[0]->phone }}" required>
 
                 @if ($errors->has('phone'))
                     <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
             <div class="col-md-6">
                 <input id="dateOfBirth" type="date"
                        class="form-control{{ $errors->has('dateOfBirth') ? ' is-invalid' : '' }}" name="dateOfBirth"
-                       value="{{ $client[0]->dateOfBirth }}" required>
+                       value="{{ $employee[0]->dateOfBirth }}" required>
 
                 @if ($errors->has('dateOfBirth'))
                     <span class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
             <div class="col-md-6">
                 <input id="address" type="text"
                        class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address"
-                       value="{{ $client[0]->address }}" required autofocus>
+                       value="{{ $employee[0]->address }}" required autofocus>
 
                 @if ($errors->has('address'))
                     <span class="invalid-feedback" role="alert">
@@ -93,7 +93,7 @@
 
             <div class="col-md-6">
                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                       placeholder="email@email.com" name="email" value="{{ $client[0]->email }}" required>
+                       placeholder="email@email.com" name="email" value="{{ $employee[0]->email }}" required>
 
                 @if ($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
@@ -123,20 +123,23 @@
     <div class="form-group row">
         <div class="col-md-4 col-xs-6 text-md-right"></div>
         <div class="col-md-6 col-xs-6">
-            <form method="POST" action="/clients/{{ $client[0]->id }}">
 
-                @method('DELETE')
-                @csrf
+            @if (Auth::user()->isAdmin)
+                <form method="POST" action="/employees/{{ $employee[0]->id }}">
 
-                <div class="field">
+                    @method('DELETE')
+                    @csrf
 
-                    <div class="control">
-                        <button type="submit" class="btn btn-danger">Delete account</button>
+                    <div class="field">
+
+                        <div class="control">
+                            <button type="submit" class="btn btn-danger">Dismiss</button>
+                        </div>
+
                     </div>
 
-                </div>
-
-            </form>
+                </form>
+            @endif
         </div>
     </div>
 @endsection
