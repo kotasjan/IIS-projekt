@@ -103,12 +103,15 @@ class ClientsController extends Controller
             request()->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'surname' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'phone' => ['required', 'string', 'max:15'],
                 'dateOfBirth' => ['required', 'date'],
                 'address' => ['required', 'string', 'max:255'],
             ])
         );
+
+        $client = DB::table('clients')
+            ->leftJoin('users', 'clients.id', '=', 'users.id')->where('clients.id', '=', $client->id)
+            ->get();
 
         return view('clients.show', compact('client'));
     }

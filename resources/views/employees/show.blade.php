@@ -54,6 +54,14 @@
     </div>
 
     <div class="form-group row">
+        <label class="col-md-2 col-xs-6 col-form-label text-md-right">Bank account</label>
+
+        <div class="col-md- col-xs-6">
+            <label class="col-md-4 col-form-label text-md-left font-weight-normal">{{ $employee[0]->bankAccountNumber }}</label>
+        </div>
+    </div>
+
+    <div class="form-group row">
         <div class="col-md-2 col-xs-6 text-md-right">
 
         </div>

@@ -89,15 +89,15 @@
         </div>
 
         <div class="form-group row">
-            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+            <label class="col-md-4 col-form-label text-md-right">{{ __('Bank account') }}</label>
 
             <div class="col-md-6">
-                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                       placeholder="email@email.com" name="email" value="{{ $employee[0]->email }}" required>
+                <input id="bankAccountNumber" type="text" class="form-control{{ $errors->has('bankAccountNumber') ? ' is-invalid' : '' }}"
+                       placeholder="1111111111/0800" name="bankAccountNumber" value="{{ $employee[0]->bankAccountNumber }}" required>
 
-                @if ($errors->has('email'))
+                @if ($errors->has('bankAccountNumber'))
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('bankAccountNumber') }}</strong>
                                     </span>
                 @endif
             </div>

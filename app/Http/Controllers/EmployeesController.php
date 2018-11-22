@@ -110,12 +110,18 @@ class EmployeesController extends Controller
             request()->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'surname' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'phone' => ['required', 'string', 'max:15'],
                 'dateOfBirth' => ['required', 'date'],
                 'address' => ['required', 'string', 'max:255'],
+                'bankAccountNumber' => ['required', 'string', 'max:255'],
             ])
         );
+
+        $employee = DB::table('employees')
+            ->leftJoin('users', 'employees.id', '=', 'users.id')->where('employees.id', '=', $employee->id)
+            ->get();
+
+        return view('employees.show', compact('employee'));
 
     }
 
