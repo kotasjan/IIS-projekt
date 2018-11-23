@@ -15,8 +15,8 @@ class CreateLegalEntitiesTable extends Migration
     {
         Schema::create('legal_entities', function (Blueprint $table) {
             $table->unsignedInteger('id')->unique();
-            $table->string('ico');
-            $table->string('dic');
+            $table->string('ico')->unique();
+            $table->string('dic')->unique();
             $table->string('billingAddress');
             $table->timestamps();
 

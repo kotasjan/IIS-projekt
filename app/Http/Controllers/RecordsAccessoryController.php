@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RecordAccessoryController extends Controller
+class RecordsAccessoryController extends Controller
 {
     //
 }

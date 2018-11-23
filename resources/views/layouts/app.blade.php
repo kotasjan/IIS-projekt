@@ -48,8 +48,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/orders">
-                            Orders
+                        <a class="nav-link" href="/borrowings">
+                            Borrowings
                         </a>
                     </li>
 

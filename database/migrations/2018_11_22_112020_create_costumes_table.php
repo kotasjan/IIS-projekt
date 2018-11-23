@@ -15,6 +15,7 @@ class CreateCostumesTable extends Migration
     {
         Schema::create('costumes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->string('manufacturer');
             $table->string('material');
             $table->string('description');
@@ -23,7 +24,7 @@ class CreateCostumesTable extends Migration
             $table->integer('worn');
             $table->string('size');
             $table->string('color');
-            $table->boolean('availability');
+            $table->boolean('availability')->default(false);
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('category_id');
             $table->timestamps();

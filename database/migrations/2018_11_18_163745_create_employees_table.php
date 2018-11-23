@@ -15,7 +15,7 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->unsignedInteger('id')->unique();
-            $table->string("bankAccountNumber")->default(null);
+            $table->string("bankAccountNumber")->nullable();
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('users')->onDelete('cascade');

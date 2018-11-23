@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Borrowing;
 use App\Client;
 use App\User;
 use App\Http\Controllers\Controller;
@@ -81,6 +82,11 @@ class RegisterController extends Controller
 
         Client::create([
             'id' => $user['id'],
+        ]);
+
+        Borrowing::create([
+            'client_id' => $user['id'],
+            'dateOfRental' => date("Y-m-d H:i:s"),
         ]);
 
         return $user;

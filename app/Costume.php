@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Costume extends Model
 {
     protected $fillable = [
-        'manufacturer', 'material', 'description', 'price', 'dateOfManufacture', 'worn', 'size', 'color', 'availability',
+        'name', 'manufacturer', 'material', 'description', 'price', 'dateOfManufacture', 'worn', 'size', 'color', 'availability', 'employee_id', 'category_id'
     ];
 
     public function employee() {

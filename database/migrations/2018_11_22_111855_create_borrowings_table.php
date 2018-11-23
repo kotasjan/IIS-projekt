@@ -15,18 +15,19 @@ class CreateBorrowingsTable extends Migration
     {
         Schema::create('borrowings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("nameOfEvent");
-            $table->integer('numberOfCostumes');
-            $table->integer('numberOfAccessories');
+            $table->string("nameOfEvent")->default('');
+            $table->integer('numberOfCostumes')->default(0);
+            $table->integer('numberOfAccessories')->default(0);
             $table->date('dateOfRental');
-            $table->integer('totalPrice');
-            $table->boolean('isFinished');
+            $table->integer('totalPrice')->default(0);
+            $table->boolean('isFinished')->default(false);
+            $table->boolean('isCurrent')->default(true);
             $table->unsignedInteger('client_id');
-            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('employee_id')->nullable();
             $table->timestamps();
 
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('employee_id')->references('id')->on('employees');
         });
     }
 

@@ -18,15 +18,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', 'HomeController@index');
 
-    //Route::resource('orders', 'OrdersController');
+    Route::resource('borrowings', 'BorrowingsController');
 
     Route::resource('clients', 'ClientsController');
 
-    //Route::resource('costumes', 'CostumesController');
+    Route::resource('costumes', 'CostumesController');
 
-    //Route::resource('accessories', 'AccessoriesController');
+    Route::resource('accessories', 'AccessoriesController');
 
-    //Route::resource('categories', 'CategoriesController');
+    Route::resource('categories', 'CategoriesController');
 
     Route::resource('employees', 'EmployeesController');
 
