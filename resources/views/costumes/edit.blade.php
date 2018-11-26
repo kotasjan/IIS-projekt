@@ -1,44 +1,43 @@
 @extends('layouts.app')
 
-@section('title', 'Add costume')
+@section('title', 'Edit costume')
 
-@section('headline', 'Add costume')
+@section('headline', 'Edit costume')
 
 @section('content')
 
-    <form method="POST" action=".">
-
+    <form method="POST" action="../{{ $costume->id }}">
+        @method('PATCH')
         @csrf
 
         <div class="form-group row">
             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
             <div class="col-md-6">
-                <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
-                       name="price" value="{{ old('price') }}" required>
+                <input id="price" type="text"
+                       class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
+                       name="price" value="{{ $costume->price }}">
 
                 @if ($errors->has('price'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('price') }}</strong>
-                    </span>
+                                        <strong>{{ $errors->first('price') }}</strong>
+                                    </span>
                 @endif
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="dateOfManufacture"
-                   class="col-md-4 col-form-label text-md-right">{{ __('Date of manufacture') }}</label>
+            <label for="dateOfManufacture" class="col-md-4 col-form-label text-md-right">{{ __('Date of manufacture') }}</label>
 
             <div class="col-md-6">
-                <input id="dateOfManufacture" type="date"
+                <input id="dateOfManufacture" type="text"
                        class="form-control{{ $errors->has('dateOfManufacture') ? ' is-invalid' : '' }}"
-                       name="dateOfManufacture"
-                       value="{{ old('dateOfManufacture') }}" required>
+                       name="dateOfManufacture" value="{{ $costume->dateOfManufacture }}">
 
                 @if ($errors->has('dateOfManufacture'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('dateOfManufacture') }}</strong>
-                    </span>
+                                        <strong>{{ $errors->first('dateOfManufacture') }}</strong>
+                                    </span>
                 @endif
             </div>
         </div>
@@ -47,13 +46,14 @@
             <label for="worn" class="col-md-4 col-form-label text-md-right">{{ __('Worn (%)') }}</label>
 
             <div class="col-md-6">
-                <input id="worn" type="text" class="form-control{{ $errors->has('worn') ? ' is-invalid' : '' }}"
-                       name="worn" value="{{ old('worn') }}" required>
+                <input id="worn" type="text"
+                       class="form-control{{ $errors->has('worn') ? ' is-invalid' : '' }}"
+                       name="worn" value="{{ $costume->worn }}">
 
                 @if ($errors->has('worn'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('worn') }}</strong>
-                    </span>
+                                        <strong>{{ $errors->first('worn') }}</strong>
+                                    </span>
                 @endif
             </div>
         </div>
@@ -62,23 +62,14 @@
             <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
 
             <div class="col-md-6">
-                <select name="size" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}"
-                        value="{{ old('size') }}" required>
-
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                    <option value="XXXL">XXXL</option>
-
-                </select>
+                <input id="size" type="text"
+                       class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}"
+                       name="size" value="{{ $costume->size }}">
 
                 @if ($errors->has('size'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('size') }}</strong>
-                    </span>
+                                        <strong>{{ $errors->first('size') }}</strong>
+                                    </span>
                 @endif
             </div>
         </div>
@@ -87,13 +78,14 @@
             <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Color') }}</label>
 
             <div class="col-md-6">
-                <input id="color" type="text" class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}"
-                       name="color" value="{{ old('color') }}" required>
+                <input id="color" type="text"
+                       class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}"
+                       name="color" value="{{ $costume->color }}">
 
                 @if ($errors->has('color'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('color') }}</strong>
-                    </span>
+                                        <strong>{{ $errors->first('color') }}</strong>
+                                    </span>
                 @endif
             </div>
         </div>
@@ -103,8 +95,7 @@
 
             <div class="col-md-6">
 
-                <select name="employee_id" class="form-control{{ $errors->has('employee_id') ? ' is-invalid' : '' }}"
-                        value="{{ \Illuminate\Support\Facades\Auth::id() }}" required>
+                <select name="employee_id" class="form-control{{ $errors->has('employee_id') ? ' is-invalid' : '' }}" value="{{ $costume->employee_id }}" required>
                     @foreach(\App\Employee::all() as $employee)
 
                         <option value="{{$employee->id}}">{{ \App\User::find($employee->id)->name . ' ' . \App\User::find($employee->id)->surname }}</option>
@@ -115,8 +106,8 @@
 
                 @if ($errors->has('employee_id'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('employee_id') }}</strong>
-                    </span>
+                                        <strong>{{ $errors->first('employee_id') }}</strong>
+                                    </span>
                 @endif
             </div>
         </div>
@@ -127,12 +118,12 @@
             <div class="col-md-6">
                 <input id="availability" type="checkbox"
                        class="form-control{{ $errors->has('availability') ? ' is-invalid' : '' }}"
-                       style="width: auto;" name="availability">
+                       style="width: auto;" name="availability" value="{{ $costume->availability }}">
 
                 @if ($errors->has('availability'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('availability') }}</strong>
-                    </span>
+                                        <strong>{{ $errors->first('availability') }}</strong>
+                                    </span>
                 @endif
             </div>
         </div>
@@ -153,4 +144,5 @@
 
         @include('layouts.errors')
     </form>
+
 @endsection

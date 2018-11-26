@@ -8,7 +8,7 @@
 
     @if (\Illuminate\Support\Facades\Auth::user()->isAdmin ||  DB::table('employees')->find(\Illuminate\Support\Facades\Auth::id()))
 
-        <form method="get" action="/costumes/create">
+        <form method="get" action="create" style="margin-bottom: 15px">
 
             <button type="submit" class="btn btn-primary">+ Add costume</button>
 
@@ -25,6 +25,7 @@
             <th><b>Worn</b></th>
             <th><b>Size</b></th>
             <th><b>Price</b></th>
+            <th><b>Available</b></th>
             <th><b>Detail</b></th>
         </tr>
         </thead>
@@ -50,10 +51,13 @@
                     {{ $costume->size }}
                 </td>
                 <td>
-                    {{ $costume->price }}
+                    {{ $costume->price . ' CZK' }}
                 </td>
                 <td>
-                    <a href="/costumes/{{ $costume->id }}">Link</a>
+                    {{ ($costume->availability) ? 'Yes' : 'No' }}
+                </td>
+                <td>
+                    <a href="{{ $costume->id }}">Link</a>
                 </td>
 
             </tr>

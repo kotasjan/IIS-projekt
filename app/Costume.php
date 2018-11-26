@@ -4,25 +4,32 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed type_id
+ */
 class Costume extends Model
 {
     protected $fillable = [
-        'name', 'manufacturer', 'material', 'description', 'price', 'dateOfManufacture', 'worn', 'size', 'color', 'availability', 'employee_id', 'category_id'
+        'price', 'dateOfManufacture', 'worn', 'size', 'color', 'availability', 'employee_id', 'type_id'
     ];
 
-    public function employee() {
+    public function employee()
+    {
         return $this->belongsTo(Employee::class);
     }
 
-    public function recordCostume() {
+    public function recordCostume()
+    {
         return $this->hasMany(RecordCostume::class);
     }
 
-    public function accessory() {
+    public function accessory()
+    {
         return $this->hasMany(Accessory::class);
     }
 
-    public function category() {
+    public function category()
+    {
         return $this->hasOne(Category::class);
     }
 }

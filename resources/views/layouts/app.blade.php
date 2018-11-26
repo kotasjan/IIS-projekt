@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/costumes">
+                        <a class="nav-link" href="/costume_types">
                             Costumes
                         </a>
                     </li>

@@ -15,22 +15,18 @@ class CreateCostumesTable extends Migration
     {
         Schema::create('costumes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('manufacturer');
-            $table->string('material');
-            $table->string('description');
             $table->integer('price');
             $table->date('dateOfManufacture');
             $table->integer('worn');
             $table->string('size');
             $table->string('color');
             $table->boolean('availability')->default(false);
+            $table->unsignedInteger('type_id');
             $table->unsignedInteger('employee_id');
-            $table->unsignedInteger('category_id');
             $table->timestamps();
 
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('type_id')->references('id')->on('costume_types')->onDelete('cascade');
         });
     }
 

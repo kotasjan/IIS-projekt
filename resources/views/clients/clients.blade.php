@@ -10,7 +10,6 @@
     <table class="table table-striped table-bordered">
         <thead>
         <tr>
-            <th><b>ID</b></th>
             <th><b>Name</b></th>
             <th><b>Surname</b></th>
             <th><b>Email</b></th>
@@ -24,9 +23,6 @@
 
             <tr>
 
-                <td>
-                    {{ $client->id }}
-                </td>
                 <td>
                     {{ $client->name }}
                 </td>

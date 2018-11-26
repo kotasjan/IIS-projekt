@@ -22,7 +22,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('clients', 'ClientsController');
 
-    Route::resource('costumes', 'CostumesController');
+    Route::resource('costume_types', 'CostumeTypesController');
+
+    Route::resource('costume_types.costumes', 'CostumesController');
+
+    Route::post('costume_types/{costume_type}/costumes/{costume}/add', 'CostumesController@add');
 
     Route::resource('accessories', 'AccessoriesController');
 

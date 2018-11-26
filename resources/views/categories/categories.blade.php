@@ -8,7 +8,7 @@
 
     @if (\Illuminate\Support\Facades\Auth::user()->isAdmin || DB::table('employees')->find(\Illuminate\Support\Facades\Auth::id()))
 
-        <form method="get" action="/categories/create">
+        <form method="get" action="/categories/create" style="margin-bottom: 15px">
 
             <button type="submit" class="btn btn-primary">+ Add category</button>
 
