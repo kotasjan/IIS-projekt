@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Půjčovna kostýmů')</title>
+    <title>@yield('title', 'Costume rental')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -43,11 +43,6 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/">
-                            Dashboard <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/borrowings">
                             Borrowings
                         </a>
@@ -56,28 +51,39 @@
                     <!-- TODO: doplnit autorizaci pro zamestnance -->
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/clients">
-                            Clients
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/costume_types">
                             Costumes
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/categories">
-                            Categories
-                        </a>
-                    </li>
 
-                    <!-- TODO: doplnit autorizaci pro admina -->
+                    @if (\App\Employee::find(\Illuminate\Support\Facades\Auth::id()))
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/employees">
-                            Employees
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/categories">
+                                Categories
+                            </a>
+                        </li>
+
+                    @endif
+
+                    @if (\App\Employee::find(\Illuminate\Support\Facades\Auth::id()) || \App\User::find(\Illuminate\Support\Facades\Auth::id())->isAdmin)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/clients">
+                                Clients
+                            </a>
+                        </li>
+                    @endif
+
+
+                <!-- TODO: doplnit autorizaci pro admina -->
+
+                    @if (\App\User::find(\Illuminate\Support\Facades\Auth::id())->isAdmin)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/employees">
+                                Employees
+                            </a>
+                        </li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->

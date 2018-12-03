@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Půjčovna kostýmů'),
+    'name' => env('APP_NAME', 'Costume rental'),
 
     /*
     |--------------------------------------------------------------------------

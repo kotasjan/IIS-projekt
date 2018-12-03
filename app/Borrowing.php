@@ -2,11 +2,14 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 /**
  * @property mixed id
+ * @property mixed dateOfRental
+ * @property mixed dateOfReturn
  */
 class Borrowing extends Model
 {
@@ -45,16 +48,16 @@ class Borrowing extends Model
         $price = 0;
 
         foreach ($costume_records as $record){
-            if($record->dateOfReturn != null && $record->dateOfRental != null){
-                $price += (Costume::where(['id' => $record->costume_id])->first()->price * ($record->dateOfReturn)->diffInDays($record->dateOfRental));
+            if($this->dateOfReturn != null && $this->dateOfRental != null){
+                $price += (Costume::where(['id' => $record->costume_id])->first()->price * (Carbon::parse($this->dateOfReturn)->diffInDays(Carbon::parse($this->dateOfRental))));
             } else {
                 $price += Costume::where(['id' => $record->costume_id])->first()->price;
             }
         }
 
         foreach ($accessory_records as $record) {
-            if($record->dateOfReturn != null && $record->dateOfRental != null){
-                $price += (Accessory::where(['id' => $record->accessory_id])->first()->price * ($record->dateOfReturn)->diffInDays($record->dateOfRental));
+            if($this->dateOfReturn != null && $this->dateOfRental != null){
+                $price += (Accessory::where(['id' => $record->accessory_id])->first()->price * (Carbon::parse($this->dateOfReturn)->diffInDays(Carbon::parse($this->dateOfRental))));
             } else {
                 $price += Accessory::where(['id' => $record->accessory_id])->first()->price;
             }
