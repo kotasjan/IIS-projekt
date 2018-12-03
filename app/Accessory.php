@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Accessory extends Model
 {
     protected $fillable = [
-        'name', 'description', 'dateOfManufacture', 'price', 'availability',
+        'name', 'description', 'dateOfManufacture', 'price', 'availability', 'employee_id', 'type_id',
     ];
 
 
@@ -19,11 +19,10 @@ class Accessory extends Model
     public function recordAccessory()
     {
         return $this->hasMany(RecordAccessory::class);
-
     }
 
-    public function costume()
+    public function costumeType()
     {
-        return $this->hasOne(Costume::class);
+        return $this->belongsTo(CostumeType::class);
     }
 }

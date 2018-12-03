@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Add costume')
+@section('title', 'Add accessory')
 
-@section('headline', 'Add costume')
+@section('headline', 'Add accessory')
 
 @section('content')
 
@@ -11,15 +11,30 @@
         @csrf
 
         <div class="form-group row">
-            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
+            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
             <div class="col-md-6">
-                <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
-                       name="price" value="{{ old('price') }}" required>
+                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                       name="name" value="{{ old('name') }}" required>
 
-                @if ($errors->has('price'))
+                @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('price') }}</strong>
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+
+            <div class="col-md-6">
+                <input id="description" type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"
+                       name="description" value="{{ old('description') }}" required>
+
+                @if ($errors->has('description'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('description') }}</strong>
                     </span>
                 @endif
             </div>
@@ -44,55 +59,15 @@
         </div>
 
         <div class="form-group row">
-            <label for="worn" class="col-md-4 col-form-label text-md-right">{{ __('Worn (%)') }}</label>
+            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
             <div class="col-md-6">
-                <input id="worn" type="text" class="form-control{{ $errors->has('worn') ? ' is-invalid' : '' }}"
-                       name="worn" value="{{ old('worn') }}" required>
+                <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"
+                       name="price" value="{{ old('price') }}" required>
 
-                @if ($errors->has('worn'))
+                @if ($errors->has('price'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('worn') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
-
-            <div class="col-md-6">
-                <select name="size" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}"
-                        value="{{ old('size') }}" required>
-
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
-                    <option value="XXXL">XXXL</option>
-
-                </select>
-
-                @if ($errors->has('size'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('size') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="color" class="col-md-4 col-form-label text-md-right">{{ __('Color') }}</label>
-
-            <div class="col-md-6">
-                <input id="color" type="text" class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}"
-                       name="color" value="{{ old('color') }}" required>
-
-                @if ($errors->has('color'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('color') }}</strong>
+                        <strong>{{ $errors->first('price') }}</strong>
                     </span>
                 @endif
             </div>

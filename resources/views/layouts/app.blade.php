@@ -66,11 +66,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/accessories">
-                            Accessories
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/categories">
                             Categories
                         </a>

@@ -21,11 +21,11 @@ class CreateAccessoriesTable extends Migration
             $table->integer('price');
             $table->boolean('availability');
             $table->unsignedInteger('employee_id');
-            $table->unsignedInteger('costume_id');
+            $table->unsignedInteger('type_id');
             $table->timestamps();
 
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('costume_id')->references('id')->on('costumes');
+            $table->foreign('type_id')->references('id')->on('costume_types')->onDelete('cascade');
         });
     }
 

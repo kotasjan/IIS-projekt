@@ -7,14 +7,6 @@
 @section('content')
 
     <div class="form-group row">
-        <label class="col-md-2 col-xs-6 col-form-label text-md-right">Price</label>
-
-        <div class="col-md-10 col-xs-6">
-            <label class="col-md-4 col-form-label text-md-left font-weight-normal">{{ $costume->price }}</label>
-        </div>
-    </div>
-
-    <div class="form-group row">
         <label class="col-md-2 col-xs-6 col-form-label text-md-right">Date of manufacture</label>
 
         <div class="col-md-10 col-xs-6">
@@ -43,6 +35,14 @@
 
         <div class="col-md-10 col-xs-6">
             <label class="col-md-4 col-form-label text-md-left font-weight-normal">{{ $costume->color }}</label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-2 col-xs-6 col-form-label text-md-right">Price/day</label>
+
+        <div class="col-md-10 col-xs-6">
+            <label class="col-md-4 col-form-label text-md-left font-weight-normal">{{ $costume->price }}</label>
         </div>
     </div>
 

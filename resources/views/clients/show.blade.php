@@ -53,8 +53,8 @@
         </div>
     </div>
 
-    <div class="form-group row">
-        <div class="col-md-2 col-xs-6 text-md-right">
+    <div class="row">
+        <div class="col-md-2 col-xs-6">
             @if (Auth::user()->isAdmin && !(\App\Employee::find($client[0]->id)))
                 <form method="POST" action="/employees">
                     @csrf
@@ -68,7 +68,7 @@
             @endif
         </div>
 
-        <div class="col-md- col-xs-6">
+        <div class="col-md-2 col-xs-6">
             <form method="get" action="/clients/{{ $client[0]->id }}/edit">
 
                 <button class="btn btn-primary" type="submit">Edit</button>

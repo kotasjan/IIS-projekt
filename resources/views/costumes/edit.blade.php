@@ -27,17 +27,19 @@
         </div>
 
         <div class="form-group row">
-            <label for="dateOfManufacture" class="col-md-4 col-form-label text-md-right">{{ __('Date of manufacture') }}</label>
+            <label for="dateOfManufacture"
+                   class="col-md-4 col-form-label text-md-right">{{ __('Date of manufacture') }}</label>
 
             <div class="col-md-6">
-                <input id="dateOfManufacture" type="text"
+                <input id="dateOfManufacture" type="date"
                        class="form-control{{ $errors->has('dateOfManufacture') ? ' is-invalid' : '' }}"
-                       name="dateOfManufacture" value="{{ $costume->dateOfManufacture }}">
+                       name="dateOfManufacture"
+                       value="{{ $costume->dateOfManufacture }}" required>
 
                 @if ($errors->has('dateOfManufacture'))
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('dateOfManufacture') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('dateOfManufacture') }}</strong>
+                    </span>
                 @endif
             </div>
         </div>
@@ -62,14 +64,23 @@
             <label for="size" class="col-md-4 col-form-label text-md-right">{{ __('Size') }}</label>
 
             <div class="col-md-6">
-                <input id="size" type="text"
-                       class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}"
-                       name="size" value="{{ $costume->size }}">
+                <select name="size" class="form-control{{ $errors->has('size') ? ' is-invalid' : '' }}"
+                        required>
+
+                    <option value="XS" {{($costume->size == "XS") ? 'selected' : ''}}>XS</option>
+                    <option value="S" {{($costume->size == "S") ? 'selected' : ''}}>S</option>
+                    <option value="M" {{($costume->size == "M") ? 'selected' : ''}}>M</option>
+                    <option value="L" {{($costume->size == "L") ? 'selected' : ''}}>L</option>
+                    <option value="XL" {{($costume->size == "XL") ? 'selected' : ''}}>XL</option>
+                    <option value="XXL" {{($costume->size == "XXL") ? 'selected' : ''}}>XXL</option>
+                    <option value="XXXL" {{($costume->size == "XXXL") ? 'selected' : ''}}>XXXL</option>
+
+                </select>
 
                 @if ($errors->has('size'))
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('size') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('size') }}</strong>
+                    </span>
                 @endif
             </div>
         </div>
@@ -98,7 +109,7 @@
                 <select name="employee_id" class="form-control{{ $errors->has('employee_id') ? ' is-invalid' : '' }}" value="{{ $costume->employee_id }}" required>
                     @foreach(\App\Employee::all() as $employee)
 
-                        <option value="{{$employee->id}}">{{ \App\User::find($employee->id)->name . ' ' . \App\User::find($employee->id)->surname }}</option>
+                        <option value="{{$employee->id}}" {{($costume->employee_id == $employee->id) ? 'selected' : ''}}>{{ \App\User::find($employee->id)->name . ' ' . \App\User::find($employee->id)->surname }}</option>
 
                     @endforeach
 
@@ -118,7 +129,7 @@
             <div class="col-md-6">
                 <input id="availability" type="checkbox"
                        class="form-control{{ $errors->has('availability') ? ' is-invalid' : '' }}"
-                       style="width: auto;" name="availability" value="{{ $costume->availability }}">
+                       style="width: auto;" name="availability" {{($costume->availability) ? 'checked' : ''}}>
 
                 @if ($errors->has('availability'))
                     <span class="invalid-feedback" role="alert">

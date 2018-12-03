@@ -19,8 +19,8 @@ class CreateRecordCostumesTable extends Migration
             $table->unsignedInteger('costume_id');
             $table->timestamps();
 
-            $table->foreign('borrowing_id')->references('id')->on('borrowings');
-            $table->foreign('costume_id')->references('id')->on('costumes');
+            $table->foreign('borrowing_id')->references('id')->on('borrowings')->onDelete('cascade');;
+            $table->foreign('costume_id')->references('id')->on('costumes')->onDelete('cascade');;
         });
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property mixed type_id
+ * @property mixed id
  */
 class Costume extends Model
 {
@@ -31,5 +32,10 @@ class Costume extends Model
     public function category()
     {
         return $this->hasOne(Category::class);
+    }
+
+    public function costumeType()
+    {
+        return $this->belongsTo(CostumeType::class);
     }
 }

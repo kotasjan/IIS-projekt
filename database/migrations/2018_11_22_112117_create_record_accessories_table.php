@@ -19,8 +19,8 @@ class CreateRecordAccessoriesTable extends Migration
             $table->unsignedInteger('accessory_id');
             $table->timestamps();
 
-            $table->foreign('borrowing_id')->references('id')->on('borrowings');
-            $table->foreign('accessory_id')->references('id')->on('accessories');
+            $table->foreign('borrowing_id')->references('id')->on('borrowings')->onDelete('cascade');;
+            $table->foreign('accessory_id')->references('id')->on('accessories')->onDelete('cascade');;
         });
     }
 
